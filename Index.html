@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+    
+    <div class="card text-center" style="width: 25%; margin-left: auto; margin-right: auto; border-width: 3px;">
+        <div class="card-header">
+        <h2>Tic Tac Toe</h2>
+    </div>
+    <div class="card-body" style="margin-left: auto; margin-right: auto;">
+        <table>
+            <tr id="1stRow"  style="border-bottom: 3px solid black;">
+                <td id="1" style="border-right: 3px solid black; width: 75px; height: 75px;">1</td>
+                <td id="2" style=" width: 75px; height: 75px;">2</td>
+                <td id="3" style="border-left: 3px solid black;  width: 75px; height: 75px;">3</td>
+            </tr>
+            <tr id="2ndRow" style="border-bottom: 3px solid black;">
+                <td id="4" style="border-right: 3px solid black;  width: 75px; height: 75px;">4</td>
+                <td id="5" style=" width: 75px; height: 75px;">5</td>
+                <td id="6" style="border-left: 3px solid black;  width: 75px; height: 75px;">6</td>
+            </tr>
+            <tr id="3rdRow">
+                <td id="7" style="border-right: 3px solid black;  width: 75px; height: 75px;">7</td>
+                <td id="8" style=" width: 75px; height: 75px;">8</td>
+                <td id="9" style="border-left: 3px solid black;  width: 75px; height: 75px;">9</td>
+            </tr>
+        </table><br>
+        <div>
+            <button type="button" class="btn btn-primary">Reset</button>
+        </div>
+    </div>
+    </div><br>
+    
+    <div id="winnerDis">
+        <p>
+
+        </p>
+    </div>
+
+
+
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
