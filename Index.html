@@ -7,38 +7,53 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
-    
-    <div class="card text-center" style="width: 25%; margin-left: auto; margin-right: auto; border-width: 3px;">
-        <div class="card-header">
-        <h2>Tic Tac Toe</h2>
-    </div>
-    <div class="card-body" style="margin-left: auto; margin-right: auto;">
-        <table id="mTable">
-            <tr id="1stRow"  style="border-bottom: 3px solid black;">
-                <td id="1" style="border-right: 3px solid black; width: 75px; height: 75px;">1</td>
-                <td id="2" style=" width: 75px; height: 75px;">2</td>
-                <td id="3" style="border-left: 3px solid black;  width: 75px; height: 75px;">3</td>
-            </tr>
-            <tr id="2ndRow" style="border-bottom: 3px solid black;">
-                <td id="4" style="border-right: 3px solid black;  width: 75px; height: 75px;">4</td>
-                <td id="5" style=" width: 75px; height: 75px;">5</td>
-                <td id="6" style="border-left: 3px solid black;  width: 75px; height: 75px;">6</td>
-            </tr>
-            <tr id="3rdRow">
-                <td id="7" style="border-right: 3px solid black;  width: 75px; height: 75px;">7</td>
-                <td id="8" style=" width: 75px; height: 75px;">8</td>
-                <td id="9" style="border-left: 3px solid black;  width: 75px; height: 75px;">9</td>
-            </tr>
-        </table><br>
-        <div>
-            <button type="button" class="btn btn-primary" id="resetBtn">Reset</button>
+        <div class="card container" style="max-width: px; margin-left: auto; margin-right: auto; border-width: 3px;">
+                <div class="card-header text-center">
+                <h2>Tic Tac Toe</h2>
+            </div>
+            <div class="card-body row" style="margin-left: auto; margin-right: auto;">
+                
+                
+                <table class="col-auto text-center"  id="mTable">
+                    <tr id="1stRow"  style="border-bottom: 3px solid black;">
+                        <td id="1" style="border-right: 3px solid black; width: 75px; height: 75px;">1</td>
+                        <td id="2" style=" width: 75px; height: 75px;">2</td>
+                        <td id="3" style="border-left: 3px solid black;  width: 75px; height: 75px;">3</td>
+                    </tr>
+                    <tr id="2ndRow" style="border-bottom: 3px solid black;">
+                        <td id="4" style="border-right: 3px solid black;  width: 75px; height: 75px;">4</td>
+                        <td id="5" style=" width: 75px; height: 75px;">5</td>
+                        <td id="6" style="border-left: 3px solid black;  width: 75px; height: 75px;">6</td>
+                    </tr>
+                    <tr id="3rdRow">
+                        <td id="7" style="border-right: 3px solid black;  width: 75px; height: 75px;">7</td>
+                        <td id="8" style=" width: 75px; height: 75px;">8</td>
+                        <td id="9" style="border-left: 3px solid black;  width: 75px; height: 75px;">9</td>
+                    </tr>
+                </table><br>
+                <div class="col text-center">
+                    <div>
+                        <div>
+                            <h3><u>Turn:</u></h3>
+                        </div>
+                        <div>
+                            <h4 id="p1Display" class="object-fit-sm-contain border rounded">Player 1: ❌</h4>
+                        </div>
+                        <div>
+                            <h4 id="p2Display" class="object-fit-sm-contain border rounded">Player 2: ⭕</h4>
+                        </div>
+                    </div>
+                    <div>
+                        <p id="messageDis">Your BOi</p>
+                    </div>
+                </div>
+                <br> 
+                <div>
+                    <button type="button" class="btn btn-primary text-center" id="resetBtn">Reset</button>
+                </div>
+            </div>
         </div>
-    </div>
-    </div><br>
     
-    <div>
-        <p id="messageDis"></p>
-    </div>
 
 
 
