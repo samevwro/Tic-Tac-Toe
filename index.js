@@ -15,24 +15,27 @@ let gameGrid = {
 
 function spotSelection(id) {
     if(gameGrid[id] != '') {
+        let spotTaken = turn === X ? turn = O : turn = X;
         turnNum -= 1;
         clickEvent -=1
         console.log(turn);
+        spotTaken;
         alert('Spot is taken, pick another space.');
 
     }else{
         if(turn == X){   
-            document.getElementById(id).innerHTML = XSpot;
+            
+            document.getElementById(id).textContent = XSpot;
             gameGrid[id] = X;
             console.log('x selected')
         }else {
-            document.getElementById(id).innerHTML = OSpot;
+            document.getElementById(id).textContent = OSpot;
             gameGrid[id] = O;
         }
 }};
 //Grid Click Detector
 function gridDetector() {
-    document.getElementById('1').addEventListener('click', () => {spotSelection(1), console.log('clicked')});
+    document.getElementById('1').addEventListener('click', () => {spotSelection(1)});
     document.getElementById('2').addEventListener('click', () => {spotSelection(2)});
     document.getElementById('3').addEventListener('click', () => {spotSelection(3)});
     document.getElementById('4').addEventListener('click', () => {spotSelection(4)});
@@ -48,10 +51,15 @@ function gridDetector() {
 
 function resetBtnFunc() {
     for(let i = 1; i < Object.keys(gameGrid).length+1; i++){
-        
-        //document.getElementById(i).innerHTML = " ";
-        
-        
+        let parent = document.getElementById(`td${i}`);
+        let child = document.getElementById(i);
+        let newChild = document.createElement('h3');
+        parent.removeChild(child);
+        parent.appendChild(newChild)
+        newChild.id = `${i}`
+        newChild.innerHTML = '.'
+        gameGrid[i] = ''
+
     };
     turnNum = 1;
     turn = X;
@@ -59,7 +67,8 @@ function resetBtnFunc() {
     clickEvent = 0;
     gameStatus = 'play';
     console.log(gameGrid);
-    document.getElementById('messageDis').innerHTML = 'Play again';   
+    document.getElementById('messageDis').innerHTML = 'Play again';
+    gridDetector();   
 }
 function GameOver() {
     if(turnNum > 4) {
@@ -135,8 +144,8 @@ class Game {
             }else{
                 newTurn();
                 playerBg(turn);
-                console.log(turnNum)
-                console.log(turn)
+                console.log('turn Num '+turnNum)
+                
                 
         }}})}};
 let game = new Game;
