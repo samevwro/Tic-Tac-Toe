@@ -15,54 +15,66 @@ let gameGrid = {
 
 function spotSelection(id) {
     if(gameGrid[id] != '') {
+        turnNum -= 1;
+        clickEvent -=1
+        console.log(turn);
         alert('Spot is taken, pick another space.');
+
     }else{
         if(turn == X){   
             document.getElementById(id).innerHTML = XSpot;
             gameGrid[id] = X;
+            console.log('x selected')
         }else {
             document.getElementById(id).innerHTML = OSpot;
             gameGrid[id] = O;
         }
 }};
 //Grid Click Detector
-document.getElementById('1').addEventListener('click', () => {spotSelection(1)});
-document.getElementById('2').addEventListener('click', () => {spotSelection(2)});
-document.getElementById('3').addEventListener('click', () => {spotSelection(3)});
-document.getElementById('4').addEventListener('click', () => {spotSelection(4)});
-document.getElementById('5').addEventListener('click', () => {spotSelection(5)});
-document.getElementById('6').addEventListener('click', () => {spotSelection(6)});
-document.getElementById('7').addEventListener('click', () => {spotSelection(7)});
-document.getElementById('8').addEventListener('click', () => {spotSelection(8)});
-document.getElementById('9').addEventListener('click', () => {spotSelection(9)});
+function gridDetector() {
+    document.getElementById('1').addEventListener('click', () => {spotSelection(1), console.log('clicked')});
+    document.getElementById('2').addEventListener('click', () => {spotSelection(2)});
+    document.getElementById('3').addEventListener('click', () => {spotSelection(3)});
+    document.getElementById('4').addEventListener('click', () => {spotSelection(4)});
+    document.getElementById('5').addEventListener('click', () => {spotSelection(5)});
+    document.getElementById('6').addEventListener('click', () => {spotSelection(6)});
+    document.getElementById('7').addEventListener('click', () => {spotSelection(7)});
+    document.getElementById('8').addEventListener('click', () => {spotSelection(8)});
+    document.getElementById('9').addEventListener('click', () => {spotSelection(9)});
+};
+    
 
-document.getElementById('resetBtn').addEventListener('click', () =>{   
+//The reset button
+
+function resetBtnFunc() {
     for(let i = 1; i < Object.keys(gameGrid).length+1; i++){
-        gameGrid[i] = '';
-        document.getElementById(i).innerHTML = '';
-        turnNum = 1;
-        turn = X
-        playerBg(turn)
-        clickEvent = 0;
-        gameStatus = 'play'
-        document.getElementById('messageDis').innerHTML = 'Play again'
-    }
-})
+        
+        //document.getElementById(i).innerHTML = " ";
+        
+        
+    };
+    turnNum = 1;
+    turn = X;
+    playerBg(turn);
+    clickEvent = 0;
+    gameStatus = 'play';
+    console.log(gameGrid);
+    document.getElementById('messageDis').innerHTML = 'Play again';   
+}
 function GameOver() {
     if(turnNum > 4) {
-        if(gameGrid[1]===gameGrid[2]&&gameGrid[2]===gameGrid[3]&&gameGrid[1]===gameGrid[3]||
-        gameGrid[4]===gameGrid[5]&&gameGrid[5]===gameGrid[6]&&gameGrid[4]===gameGrid[6]||
-        gameGrid[7]===gameGrid[8]&&gameGrid[8]===gameGrid[9]&&gameGrid[7]===gameGrid[9]||
-        gameGrid[1]===gameGrid[5]&&gameGrid[5]===gameGrid[9]&&gameGrid[1]===gameGrid[9]||
-        gameGrid[3]===gameGrid[5]&&gameGrid[5]===gameGrid[7]&&gameGrid[3]===gameGrid[7]||
-        gameGrid[1]===gameGrid[4]&&gameGrid[4]===gameGrid[7]&&gameGrid[1]===gameGrid[7]||
-        gameGrid[5]===gameGrid[2]&&gameGrid[5]===gameGrid[8]&&gameGrid[2]===gameGrid[8]||
-        gameGrid[3]===gameGrid[6]&&gameGrid[6]===gameGrid[9]&&gameGrid[3]===gameGrid[9]){
+        if(gameGrid[1]===gameGrid[2]&&gameGrid[2]===gameGrid[3]&&gameGrid[1]===gameGrid[3]&& gameGrid[1] != ''||
+        gameGrid[4]===gameGrid[5]&&gameGrid[5]===gameGrid[6]&&gameGrid[4]===gameGrid[6]&& gameGrid[4] != ''||
+        gameGrid[7]===gameGrid[8]&&gameGrid[8]===gameGrid[9]&&gameGrid[7]===gameGrid[9]&& gameGrid[7] != ''||
+        gameGrid[1]===gameGrid[5]&&gameGrid[5]===gameGrid[9]&&gameGrid[1]===gameGrid[9]&& gameGrid[1] != ''||
+        gameGrid[3]===gameGrid[5]&&gameGrid[5]===gameGrid[7]&&gameGrid[3]===gameGrid[7]&& gameGrid[3] != ''||
+        gameGrid[1]===gameGrid[4]&&gameGrid[4]===gameGrid[7]&&gameGrid[1]===gameGrid[7]&& gameGrid[1] != ''||
+        gameGrid[5]===gameGrid[2]&&gameGrid[5]===gameGrid[8]&&gameGrid[2]===gameGrid[8]&& gameGrid[5] != ''||
+        gameGrid[3]===gameGrid[6]&&gameGrid[6]===gameGrid[9]&&gameGrid[3]===gameGrid[9]&& gameGrid[3] != ''){
             return 'win'
         }else{
             return 'play'
         }
-        
     }else if(turnNum == 9){
         return 'tie'
     } 
@@ -70,8 +82,7 @@ function GameOver() {
         return 'play'
     }
 }
-    
-    
+ 
 function newTurn(){
     gameStatus = GameOver(); 
     
@@ -107,22 +118,26 @@ function playerBg(turn){
     }
 }
 
-playerBg(turn)
 
 class Game {
     constructor() {
     }
     start(){
+        gridDetector()
+        playerBg(turn)
+        document.getElementById('resetBtn').addEventListener('click', () =>{resetBtnFunc()}); 
         document.getElementById('mTable').addEventListener('click', () =>{
+            
             clickEvent += 1;
-            console.log(clickEvent)
             while(clickEvent===turnNum){
             if(gameStatus=='tie'||gameStatus=='win'){
                 break
             }else{
                 newTurn();
                 playerBg(turn);
-                console.log(gameStatus);
+                console.log(turnNum)
+                console.log(turn)
+                
         }}})}};
 let game = new Game;
 game.start();
