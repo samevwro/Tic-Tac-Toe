@@ -126,8 +126,6 @@ function playerBg(turn){
         document.getElementById('p1Display').classList.remove("text-bg-primary");
     }
 }
-
-
 class Game {
     constructor() {
     }
@@ -136,7 +134,6 @@ class Game {
         playerBg(turn)
         document.getElementById('resetBtn').addEventListener('click', () =>{resetBtnFunc()}); 
         document.getElementById('mTable').addEventListener('click', () =>{
-            
             clickEvent += 1;
             while(clickEvent===turnNum){
             if(gameStatus=='tie'||gameStatus=='win'){
